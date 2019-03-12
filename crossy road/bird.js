@@ -1,7 +1,6 @@
 function Bird() {
   this.y = height/2;
   this.x = width/2;
-  this.score = 0;
 
   this.velocity = 2;
   this.gravity = 0.2;
@@ -39,9 +38,5 @@ function Bird() {
     if(this.y < 20){
       this.y=20;
     }
-    if(this.y<road.y+25 && this.y>road.y+15){
-      this.score = thsi.score+1;
-    }
-
   }
 }

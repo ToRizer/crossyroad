@@ -1,8 +1,8 @@
 var bird;
+var score = 0;
 var road = [];
 var car =[];
 var bush = [];
-var grid =[];
 var dis = 60;
 function setup() {
   createCanvas(400, 600);
@@ -11,27 +11,13 @@ function setup() {
   road.push(new Road());
   car.push(new Car());
   bush.push(new Bush());
-  grid.push(new Grid());
+  textSize(32);
 
 }
 
 function draw() {
 
   background(175);
-  createP("SCORE : " + bird.score);
-
-  if(frameCount%20 == 0){
-    grid.push(new Grid());
-  }
-
-  for(var i=grid.length-1; i >=0; i--){
-    grid[i].show();
-    grid[i].update();
-    if(grid[i].y>height){
-      grid.splice(i,1);
-    }
-  }
-
 
   if(frameCount%dis == 0){
     road.push(new Road());
@@ -83,14 +69,17 @@ function draw() {
   bird.update();
   bird.show();
   bird.death();
+  text("SCORE : " + score, 10, 50);
 }
 
 function keyPressed() {
   if(keyCode === UP_ARROW){
     bird.up();
+    score++;
   }
   else if (keyCode === DOWN_ARROW) {
     bird.down();
+    score--;
   }
   else if (keyCode === LEFT_ARROW) {
     bird.left();
